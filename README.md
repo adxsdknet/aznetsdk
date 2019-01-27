@@ -1,4 +1,6 @@
-
+This is a test clone of azure-sdk-for-net.
+This repo is being used for test purpose and no contibutions will be accepted.
+All contributions should be sent against azure sdk for net repo.
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
