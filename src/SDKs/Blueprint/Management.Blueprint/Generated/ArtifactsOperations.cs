@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Blueprint
         public BlueprintManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Create or update Blueprint artifact.
+        /// Create or update blueprint artifact.
         /// </summary>
         /// <param name='scope'>
         /// The scope of the resource. Valid scopes are: management group (format:
@@ -59,13 +59,13 @@ namespace Microsoft.Azure.Management.Blueprint
         /// subscription (format: '/subscriptions/{subscriptionId}').
         /// </param>
         /// <param name='blueprintName'>
-        /// name of the blueprint.
+        /// Name of the blueprint definition.
         /// </param>
         /// <param name='artifactName'>
-        /// name of the artifact.
+        /// Name of the blueprint artifact.
         /// </param>
         /// <param name='artifact'>
-        /// Blueprint artifact to save.
+        /// Blueprint artifact to create or update.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -90,10 +90,6 @@ namespace Microsoft.Azure.Management.Blueprint
         /// </return>
         public async Task<AzureOperationResponse<Artifact>> CreateOrUpdateWithHttpMessagesAsync(string scope, string blueprintName, string artifactName, Artifact artifact, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
             if (scope == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "scope");
@@ -110,6 +106,7 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "artifact");
             }
+            string apiVersion = "2018-11-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -117,6 +114,7 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("scope", scope);
                 tracingParameters.Add("blueprintName", blueprintName);
                 tracingParameters.Add("artifactName", artifactName);
@@ -131,9 +129,9 @@ namespace Microsoft.Azure.Management.Blueprint
             _url = _url.Replace("{blueprintName}", System.Uri.EscapeDataString(blueprintName));
             _url = _url.Replace("{artifactName}", System.Uri.EscapeDataString(artifactName));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -267,7 +265,7 @@ namespace Microsoft.Azure.Management.Blueprint
         }
 
         /// <summary>
-        /// Get a Blueprint artifact.
+        /// Get a blueprint artifact.
         /// </summary>
         /// <param name='scope'>
         /// The scope of the resource. Valid scopes are: management group (format:
@@ -275,10 +273,10 @@ namespace Microsoft.Azure.Management.Blueprint
         /// subscription (format: '/subscriptions/{subscriptionId}').
         /// </param>
         /// <param name='blueprintName'>
-        /// name of the blueprint.
+        /// Name of the blueprint definition.
         /// </param>
         /// <param name='artifactName'>
-        /// name of the artifact.
+        /// Name of the blueprint artifact.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -303,10 +301,6 @@ namespace Microsoft.Azure.Management.Blueprint
         /// </return>
         public async Task<AzureOperationResponse<Artifact>> GetWithHttpMessagesAsync(string scope, string blueprintName, string artifactName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
             if (scope == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "scope");
@@ -319,6 +313,7 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "artifactName");
             }
+            string apiVersion = "2018-11-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -326,6 +321,7 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("scope", scope);
                 tracingParameters.Add("blueprintName", blueprintName);
                 tracingParameters.Add("artifactName", artifactName);
@@ -339,9 +335,9 @@ namespace Microsoft.Azure.Management.Blueprint
             _url = _url.Replace("{blueprintName}", System.Uri.EscapeDataString(blueprintName));
             _url = _url.Replace("{artifactName}", System.Uri.EscapeDataString(artifactName));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -469,7 +465,7 @@ namespace Microsoft.Azure.Management.Blueprint
         }
 
         /// <summary>
-        /// Delete a Blueprint artifact.
+        /// Delete a blueprint artifact.
         /// </summary>
         /// <param name='scope'>
         /// The scope of the resource. Valid scopes are: management group (format:
@@ -477,10 +473,10 @@ namespace Microsoft.Azure.Management.Blueprint
         /// subscription (format: '/subscriptions/{subscriptionId}').
         /// </param>
         /// <param name='blueprintName'>
-        /// name of the blueprint.
+        /// Name of the blueprint definition.
         /// </param>
         /// <param name='artifactName'>
-        /// name of the artifact.
+        /// Name of the blueprint artifact.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -505,10 +501,6 @@ namespace Microsoft.Azure.Management.Blueprint
         /// </return>
         public async Task<AzureOperationResponse<Artifact>> DeleteWithHttpMessagesAsync(string scope, string blueprintName, string artifactName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
             if (scope == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "scope");
@@ -521,6 +513,7 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "artifactName");
             }
+            string apiVersion = "2018-11-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -528,6 +521,7 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("scope", scope);
                 tracingParameters.Add("blueprintName", blueprintName);
                 tracingParameters.Add("artifactName", artifactName);
@@ -541,9 +535,9 @@ namespace Microsoft.Azure.Management.Blueprint
             _url = _url.Replace("{blueprintName}", System.Uri.EscapeDataString(blueprintName));
             _url = _url.Replace("{artifactName}", System.Uri.EscapeDataString(artifactName));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -671,7 +665,7 @@ namespace Microsoft.Azure.Management.Blueprint
         }
 
         /// <summary>
-        /// List artifacts for a given Blueprint.
+        /// List artifacts for a given blueprint definition.
         /// </summary>
         /// <param name='scope'>
         /// The scope of the resource. Valid scopes are: management group (format:
@@ -679,7 +673,7 @@ namespace Microsoft.Azure.Management.Blueprint
         /// subscription (format: '/subscriptions/{subscriptionId}').
         /// </param>
         /// <param name='blueprintName'>
-        /// name of the blueprint.
+        /// Name of the blueprint definition.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -704,10 +698,6 @@ namespace Microsoft.Azure.Management.Blueprint
         /// </return>
         public async Task<AzureOperationResponse<IPage<Artifact>>> ListWithHttpMessagesAsync(string scope, string blueprintName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
             if (scope == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "scope");
@@ -716,6 +706,7 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "blueprintName");
             }
+            string apiVersion = "2018-11-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -723,6 +714,7 @@ namespace Microsoft.Azure.Management.Blueprint
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("scope", scope);
                 tracingParameters.Add("blueprintName", blueprintName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -734,9 +726,9 @@ namespace Microsoft.Azure.Management.Blueprint
             _url = _url.Replace("{scope}", scope);
             _url = _url.Replace("{blueprintName}", System.Uri.EscapeDataString(blueprintName));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -864,7 +856,7 @@ namespace Microsoft.Azure.Management.Blueprint
         }
 
         /// <summary>
-        /// List artifacts for a given Blueprint.
+        /// List artifacts for a given blueprint definition.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
