@@ -41,11 +41,6 @@ namespace Microsoft.Azure.Management.Blueprint
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// Client Api Version.
-        /// </summary>
-        string ApiVersion { get; }
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }

@@ -47,11 +47,6 @@ namespace Microsoft.Azure.Management.Blueprint
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Client Api Version.
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// The preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -347,7 +342,6 @@ namespace Microsoft.Azure.Management.Blueprint
             Assignments = new AssignmentsOperations(this);
             AssignmentOperations = new AssignmentOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2018-11-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
