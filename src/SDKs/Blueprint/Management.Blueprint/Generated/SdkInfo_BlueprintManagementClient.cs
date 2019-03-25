@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Management.Blueprint
               return new Tuple<string, string, string>[]
               {
                 new Tuple<string, string, string>("Blueprint", "Artifacts", "2018-11-01-preview"),
-                new Tuple<string, string, string>("Blueprint", "AssignmentOperations", "2018-11-01-preview"),
-                new Tuple<string, string, string>("Blueprint", "Assignments", "2018-11-01-preview"),
+                new Tuple<string, string, string>("Blueprint", "AssignmentOperations", "2018-11-01"),
+                new Tuple<string, string, string>("Blueprint", "Assignments", "2018-11-01-preview1"),
                 new Tuple<string, string, string>("Blueprint", "Blueprints", "2018-11-01-preview"),
                 new Tuple<string, string, string>("Blueprint", "PublishedArtifacts", "2018-11-01-preview"),
                 new Tuple<string, string, string>("Blueprint", "PublishedBlueprints", "2018-11-01-preview"),
